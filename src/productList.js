@@ -1,26 +1,20 @@
 import { defineStore } from 'pinia';
 import { collection, query, getDocs, orderBy } from 'firebase/firestore'
-import { db } from '../firebase'
+import { db } from '../src/firebase.js'
 //aquí poner la función del random
 export const productList = defineStore('productList', {
   state: () => ({
     productList: []
   }),
   actions: {
-    async getData() { // esta función es la que extrae los datos del json
-      const res = query(collection(db, "productos"),
-        this.productos = [];
+    async getData() {
+      const res = query(collection(db, "products"));
       const querySnapshot = await getDocs(res);
       querySnapshot.forEach((doc) => {
-        let producto = doc.data();
-        producto.id = doc.id;
-        this.total = this.productos.push(producto);
-        console.log(this.total);
-      };
-      ));
-
-      //usar la función de random dentro de getdata
-    },
-
+        let product = doc.data();
+        product.id = doc.id;
+        productList.push(product);
+      });
+    }
   },
 });

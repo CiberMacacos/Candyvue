@@ -7,19 +7,39 @@
         src=image alt=name>
       <div class="flex flex-col lg:p-4 gap-2">
         <h1><a class="font-bold text-left p-3" href="details.html?id=id">name</a></h1>
-        <h3 class="font-semibold">price€</h3>
+        <h3 class="font-semibold">doc.data().price€</h3>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { collection, query, getDocs } from "firebase/firestore";
+import { db } from "../firebase.js"
 export default {
+  name: "productsRecommended",
   data() {
-    id: productList.id;
-    image: productList.image;
-    name: productList.name;
-    price: productList.price;
+    return {
+      products: [],
+    }
+  },
+  props: {
+    name: { type: String },
+    id: { type: Number },
+    price: { type: Number },
+    image: { type: String }
+  },
+  methods: {
+    async getProducts() {
+      const first = query(collection(db, "products"));
+      const querySnapshot = await getDocs(first);
+      querySnapshot.forEach((doc) => {
+        let product = doc.data();
+        product.id = doc.id;
+        products.push(product);
+        console.log(products);
+      });
+    }
   }
 }
 </script>
