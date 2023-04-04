@@ -1,8 +1,33 @@
 <script>
-import Breadcrumb from '../components/Breadcrumb.vue'
+// import Breadcrumb from '../components/Breadcrumb.vue'
+// export default {
+//   name: 'Cart'
+// }
+
+
+//Importar firebase import { ref } from 'vue'
+// import { ref } from 'vue'
+import { collection, getDocs } from 'firebase/firestore'
 export default {
-  name: 'Cart'
+  name: 'ItemList',
+  setup() {
+    const db = inject('$firebase').db
+    const items = ref([])
+
+    async function fetchItems() {
+      const querySnapshot = await getDocs(collection(db, 'items'))
+      items.value = querySnapshot.docs.map(doc => doc.data())
+    }
+
+    fetchItems()
+
+    return {
+      items
+    }
+  }
 }
+
+
 </script>
 
 <template>
