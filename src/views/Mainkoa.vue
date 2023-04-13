@@ -2,6 +2,9 @@
 import ProductCard from '../components/ProductCard.vue'
 import { useProductStore } from '../productsStore';
 import { mapState } from 'pinia';
+import { useI18n } from 'vue-i18n';
+
+
 export default {
   name: 'Home',
 
@@ -35,16 +38,20 @@ export default {
   },
   
 }
+const {t} = useI18n();
 </script>
 
 <template>
   <!--Fondo fresas-->
+  <h1>hello</h1>
   <div class="bg-[url('/assets/chuches/fresa.jpeg')] bg-center lg:mt-5 md:w-auto sm:w-full md:h-72 h-36 bg-cover
   bg-no-repeat object-top flex flex-col items-center justify-center">
     <div class="flex flex-col gap-5 md:gap-20">
       <p class="text-center font-bold lg:text-4xl md:text-2xl text-white p-1 rounded-xl bg-pink-600 bg-opacity-50">
         ¡La desconexión que necesitas a sólo un click!
       </p>
+
+
       <div class="flex flex-row justify-center items-center gap-2 md:justify-center md:items-center">
         <a href="productList.html"
           class="flex md:items-center bg-pink-600 rounded-lg p-1 font-bold text-white md:hover:bg-pink-900 md:h-7 md:p-5 text-sm md:text-2xl">¡Quiero
