@@ -3,7 +3,8 @@ import './style.css'
 import App from './App.vue'
 import router from './router/router.js'
 import { createPinia } from 'pinia'
+import { I18n, i18n } from './plugins/i18n.js'
 
 
 createApp(App).use(router)
-  .use(createPinia()).mount('#app')
+  .use(createPinia()).use(i18n).mount('#app')
