@@ -2,7 +2,6 @@
 import ProductCard from '../components/ProductCard.vue'
 import { useProductStore } from '../productsStore';
 import { mapState } from 'pinia';
-import { useI18n } from 'vue-i18n';
 
 
 export default {
@@ -38,12 +37,12 @@ export default {
   },
   
 }
-const {t} = useI18n();
+// const {t} = useI18n();
 </script>
 
 <template>
+  <h1>{{ $t("hola")}}</h1>
   <!--Fondo fresas-->
-  <h1>hello</h1>
   <div class="bg-[url('/assets/chuches/fresa.jpeg')] bg-center lg:mt-5 md:w-auto sm:w-full md:h-72 h-36 bg-cover
   bg-no-repeat object-top flex flex-col items-center justify-center">
     <div class="flex flex-col gap-5 md:gap-20">
