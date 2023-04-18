@@ -4,6 +4,8 @@ import Mainkoa from "../views/Mainkoa.vue"
 import Infokoa from "../views/Infokoa.vue"
 import Constructionkoa from "../views/Constructionkoa.vue"
 import Cartkoa from "../views/Cartkoa.vue"
+import TestingHome from "../views/Home.vue"
+import auth from "../stores/auth"
 
 import DetailProductkoa from "../views/DetailProductkoa.vue"
 
@@ -40,11 +42,36 @@ const routes = [
     name: "DetailProduct",
     component: DetailProductkoa,
   },
+  {
+    path: "/TestingHome",
+    name: 'TestingHome',
+    component: TestingHome,
+  },
+  {
+    path: "/auth",
+    name: 'Auth',
+    component: auth,
+    meta: { requiresAuth: true }
+      
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach( async (to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)){
+    if (await getCurrentUser()){
+      next();
+    } else {
+      alert("No tienes acceso");
+      next('/');
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;
