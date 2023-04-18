@@ -22,7 +22,7 @@ export default {
     const filtered= this.productList.filter(product => product.id==this.id)
     this.data=  filtered[0]
   },
-  
+
 
   computed: {
     ...mapState(useProductStore,['productList']),
@@ -34,14 +34,14 @@ export default {
   const chosenNumbers=[];
 
   while (chosenNumbers.length<=3) {
-    
-  let randomNumber = Math.floor(Math.random()*36); 
 
-  if(!chosenNumbers.includes(randomNumber)){    
-    chosenNumbers.push(randomNumber);    
+  let randomNumber = Math.floor(Math.random()*36);
+
+  if(!chosenNumbers.includes(randomNumber)){
+    chosenNumbers.push(randomNumber);
     chosenProducts.push(this.productList[randomNumber]);
       }
-    } 
+    }
     console.log(this.productList)
     console.log("chosenproducts"+chosenProducts)
     return chosenProducts

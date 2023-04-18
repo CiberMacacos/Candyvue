@@ -22,39 +22,37 @@ export default {
   const chosenNumbers=[];
 
   while (chosenNumbers.length<=3) {
-    
-  let randomNumber = Math.floor(Math.random()*36); 
 
-  if(!chosenNumbers.includes(randomNumber)){    
-    chosenNumbers.push(randomNumber);    
+  let randomNumber = Math.floor(Math.random()*36);
+
+  if(!chosenNumbers.includes(randomNumber)){
+    chosenNumbers.push(randomNumber);
     chosenProducts.push(this.productList[randomNumber]);
       }
-    } 
+    }
     console.log(this.productList)
     console.log("chosenproducts"+chosenProducts)
     return chosenProducts
     }
   },
-  
+
 }
 // const {t} = useI18n();
 </script>
 
 <template>
-  <h1>{{ $t("hola")}}</h1>
   <!--Fondo fresas-->
   <div class="bg-[url('/assets/chuches/fresa.jpeg')] bg-center lg:mt-5 md:w-auto sm:w-full md:h-72 h-36 bg-cover
   bg-no-repeat object-top flex flex-col items-center justify-center">
     <div class="flex flex-col gap-5 md:gap-20">
       <p class="text-center font-bold lg:text-4xl md:text-2xl text-white p-1 rounded-xl bg-pink-600 bg-opacity-50">
-        ¡La desconexión que necesitas a sólo un click!
+        {{ $t( "La desconexión que necesitas en todos lados")}}
       </p>
 
 
       <div class="flex flex-row justify-center items-center gap-2 md:justify-center md:items-center">
         <a href="productList.html"
-          class="flex md:items-center bg-pink-600 rounded-lg p-1 font-bold text-white md:hover:bg-pink-900 md:h-7 md:p-5 text-sm md:text-2xl">¡Quiero
-          verlo!</a>
+          class="flex md:items-center bg-pink-600 rounded-lg p-1 font-bold text-white md:hover:bg-pink-900 md:h-7 md:p-5 text-sm md:text-2xl">  {{ $t( "¡Quiero verlo!")}}</a>
         <img src="assets/icon/mouse-click-icon.svg" class="w-6 md:hover:animate-ping" alt="Flecha">
       </div>
     </div>
@@ -90,11 +88,11 @@ export default {
       <ul class="flex flex-col lg:gap-28 md:gap-4 gap-2 w-full">
         <li class="flex items-center md:gap-10 gap-2">
           <img src="assets/icon/world.webp" alt="Mundo" class="md:w-12 w-6">
-          <p class="lg:text-3xl md:text-xl text-xs font-bold">Dulces de distintas partes del mundo</p>
+          <p class="lg:text-3xl md:text-xl text-xs font-bold">{{ $t("Dulces de distintas partes del mundo")}}</p>
         </li>
         <li class="flex items-center md:gap-10 gap-2">
           <img src="assets/icon/delivery-4.jpeg" alt="Entrega" class="md:w-12 w-6">
-          <p class="lg:text-3xl md:text-xl text-xs font-bold">Envíos a toda España (Canarias incluidas)</p>
+          <p class="lg:text-3xl md:text-xl text-xs font-bold">{{ $t("Envios a toda España(Canarias incluida)")}}</p>
         </li>
         <li class="flex items-center md:gap-10 gap-2">
           <img src="assets/icon/oferta2.jpeg" alt="Oferta" class="md:w-12 w-6">
@@ -127,7 +125,7 @@ export default {
     class="grid w-full md:grid-cols-2 lg:grid-cols-4 gap-5 md:w-5/6 md:gap-24 lg:w-auto lg:gap-10 py-5 md:py-12 lg:py-16">
     <!--Productos-->
     <ProductCard v-if="getRandomProduct" v-for="product in getRandomProduct" :name="product.name" :id="product.id" :image="product.image"
-    :price="product.price" />  
+    :price="product.price" />
   </div>
 </div>
 <!--Script de Javascript para el menú de móvil - No funciona aún-->
