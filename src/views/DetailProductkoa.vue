@@ -35,9 +35,9 @@ export default {
 
       while (chosenNumbers.length <= 3) {
 
-        let randomNumber = Math.floor(Math.random() * 36);
+        let randomNumber = Math.floor(Math.random() * 39);
 
-        if (!chosenNumbers.includes(randomNumber)) {
+        if (!chosenNumbers.includes(randomNumber) && chosenNumbers !== 13 && chosenNumbers !== 22 && chosenNumbers !== 30) {
           chosenNumbers.push(randomNumber);
           chosenProducts.push(this.productList[randomNumber]);
         }
@@ -107,7 +107,7 @@ export default {
       class="flex flex-col sm:flex-col lg:flex-row lg:gap-10 gap-7 md:gap-3 md:h-96 lg:mt-5 mb-10 w-auto">
       <!--Productos-->
       <ProductCard v-if="getRandomProduct" v-for="product in getRandomProduct" :name="product.name" :id="product.id"
-        :image="product.image" :price="product.price" />
+        :image="product.image" :price="Number(product.price).toFixed(2)" />
     </div>
   </div>
 </template>

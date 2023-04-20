@@ -1,5 +1,4 @@
 <script>
-import Breadcrumbs from '../components/Breadcrumbs.vue'
 import { useCartProducts } from '../CartStore.js'
 import { mapState, mapActions } from 'pinia'
 import CartCard from './CartCard.vue'
@@ -7,7 +6,7 @@ import Popper from 'vue3-popper'
 
 export default {
   name: 'Cart',
-  components: { Breadcrumbs, CartCard, Popper },
+  components: { CartCard, Popper },
   computed: {
     ...mapState(useCartProducts, ['cartProducts'])
   },
