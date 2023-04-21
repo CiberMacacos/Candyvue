@@ -33,7 +33,7 @@ export default {
       },
         setTimeout(() => {
           this.$confetti.stop();
-        }, "2300"))
+        }, "1000"))
     }
   },
   mounted() {

@@ -41,7 +41,7 @@ export default {
   <!--Fondo fresas-->
   <div
     class="bg-[url('/assets/chuches/fresa.jpeg')] bg-center lg:mt-5 md:w-auto sm:w-full md:h-72 h-36 bg-cover
-                                                                                                                                                      bg-no-repeat object-top flex flex-col items-center justify-center">
+                                                                                                                                                        bg-no-repeat object-top flex flex-col items-center justify-center">
     <div class="flex flex-col gap-5 md:gap-20">
       <p class="text-center font-bold lg:text-4xl md:text-2xl text-white p-1 rounded-xl bg-pink-600 bg-opacity-50">
         ¡La desconexión que necesitas a sólo un click!
@@ -122,7 +122,7 @@ export default {
       class="grid w-full md:grid-cols-2 lg:grid-cols-4 gap-5 md:w-5/6 md:gap-24 lg:w-auto lg:gap-10 py-5 md:py-12 lg:py-16">
       <!--Productos-->
       <ProductCard v-if="getRandomProduct" v-for="product in     getRandomProduct" :name="product.name" :id="product.id"
-        :image="product.image" :price="parseFloat(Number(product.price).toFixed(2))" />
+        :image="product.image" :price="parseFloat(Number(product.price).toFixed(2))" :code="product.code" />
     </div>
   </div>
   <!--Script de Javascript para el menú de móvil - No funciona aún-->

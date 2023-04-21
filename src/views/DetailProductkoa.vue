@@ -107,7 +107,7 @@ export default {
       class="flex flex-col sm:flex-col lg:flex-row lg:gap-10 gap-7 md:gap-3 md:h-96 lg:mt-5 mb-10 w-auto">
       <!--Productos-->
       <ProductCard v-if="getRandomProduct" v-for="product in getRandomProduct" :name="product.name" :id="product.id"
-        :image="product.image" :price="Number(product.price).toFixed(2)" />
+        :image="product.image" :price="Number(product.price).toFixed(2)" :code="product.code" />
     </div>
   </div>
 </template>
