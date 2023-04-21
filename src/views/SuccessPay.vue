@@ -5,7 +5,36 @@ import { useCartProducts } from '../CartStore.js'
 export default {
   name: 'SuccessPay',
   methods: {
-    ...mapActions(useCartProducts, ['restartCart'])
+    ...mapActions(useCartProducts, ['restartCart']),
+    start() {
+      this.$confetti.start({
+        particles: [
+          {
+            type: 'image',
+            url: 'assets/logos/koa.png',
+            size: 20,
+            dropRate: 5,
+            particlesPerFrame: 6
+          },
+          {
+            type: 'rect',
+            colors: [
+              'orangered',
+              'darkturquoise',
+              'gold',
+              'palegreen',
+              'mediumvioletred'
+            ],
+            size: 15,
+            particlesPerFrame: 25,
+            dropRate: 7
+          },
+        ]
+      },
+        setTimeout(() => {
+          this.$confetti.stop();
+        }, "2300"))
+    }
   },
   mounted() {
     this.restartCart();
@@ -33,7 +62,7 @@ export default {
       <div class="flex flex-row justify-center items-center gap-4 mb-20">
         <img src="/assets/icon/arrow_curve.png" alt="Click aquí" class="w-10 md:w-20" />
         <router-link to="/">
-          <button
+          <button @click="start"
             class="bg-red-100 lg:hover:bg-pink-800 lg:hover:text-white md:p-5 md:text-2xl lg:text-2xl p-3 rounded-full">Página
             principal</button>
         </router-link>
@@ -41,4 +70,3 @@ export default {
     </div>
   </div>
 </template>
-

@@ -2,31 +2,31 @@
 import Header from './components/Headerkoa.vue'
 import Footer from './components/Footerkoa.vue'
 import { useProductStore } from './productsStore.js'
-import { mapActions,mapState } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 
 
-export default{
- async created() {
+export default {
+  async created() {
     await this.getData()
-   },
-   
-   components:{
+  },
+
+  components: {
     Header, Footer
-   },
-   methods: {
-    ...mapActions(useProductStore,['getData'])
-   },
-   computed: {
-    ...mapState(useProductStore,['productList'])
-   },
- }
- 
+  },
+  methods: {
+    ...mapActions(useProductStore, ['getData'])
+  },
+  computed: {
+    ...mapState(useProductStore, ['productList'])
+  },
+}
+
 </script>
 
 <template>
   <div>
-    <Header/>
+    <Header />
     <router-view></router-view>
-    <Footer/>
+    <Footer />
   </div>
 </template>

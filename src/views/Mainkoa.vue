@@ -1,8 +1,7 @@
 <script>
 import ProductCard from '../components/ProductCard.vue'
 import { useProductStore } from '../productsStore';
-import { mapState } from 'pinia';
-
+import { mapState } from 'pinia'
 
 
 export default {
@@ -11,56 +10,6 @@ export default {
   components: { ProductCard },
   data() {
     return {
-    }
-  },
-  methods: {
-    start() {
-      this.$confetti.start({
-        particles: [
-          {
-            type: 'image',
-            url: 'assets/logo-letras.png',
-            size: 25,
-            dropRate: 4,
-            particlesPerFrame: 0.10
-          },
-          {
-            type: 'rect',
-            colors: [
-              'red',
-              'pink',
-              'yellow',
-              'green'
-            ],
-            size: 10
-          }
-        ]
-      },
-        setTimeout(() => {
-          this.$confetti.stop();
-        }, "4000"))
-    },
-
-    stop() {
-      this.$confetti.stop();
-    },
-
-    love() {
-      this.$confetti.update({
-        particles: [
-          {
-            type: 'heart',
-          },
-          {
-            type: 'circle',
-          },
-        ],
-        defaultColors: [
-          'red',
-          'pink',
-          '#ba0000'
-        ],
-      });
     }
   },
   computed: {
@@ -89,13 +38,10 @@ export default {
 </script>
 
 <template>
-  <button @click="start">Start</button>
-  <button @click="stop">Stop</button>
-  <button @click="love">Love</button>
   <!--Fondo fresas-->
   <div
     class="bg-[url('/assets/chuches/fresa.jpeg')] bg-center lg:mt-5 md:w-auto sm:w-full md:h-72 h-36 bg-cover
-                                                                                                                                  bg-no-repeat object-top flex flex-col items-center justify-center">
+                                                                                                                                                      bg-no-repeat object-top flex flex-col items-center justify-center">
     <div class="flex flex-col gap-5 md:gap-20">
       <p class="text-center font-bold lg:text-4xl md:text-2xl text-white p-1 rounded-xl bg-pink-600 bg-opacity-50">
         ¡La desconexión que necesitas a sólo un click!
@@ -176,7 +122,7 @@ export default {
       class="grid w-full md:grid-cols-2 lg:grid-cols-4 gap-5 md:w-5/6 md:gap-24 lg:w-auto lg:gap-10 py-5 md:py-12 lg:py-16">
       <!--Productos-->
       <ProductCard v-if="getRandomProduct" v-for="product in     getRandomProduct" :name="product.name" :id="product.id"
-        :image="product.image" :price="Number(product.price).toFixed(2)" />
+        :image="product.image" :price="parseFloat(Number(product.price).toFixed(2))" />
     </div>
   </div>
   <!--Script de Javascript para el menú de móvil - No funciona aún-->
