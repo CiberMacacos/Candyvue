@@ -12,6 +12,9 @@ export default {
     return {
     }
   },
+  mounted() {
+    window.scroll(0, 0);
+  },
   computed: {
     ...mapState(useProductStore, ['productList']),
     getRandomProduct() {
